@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: dec94587cd0456843b2842cbabec3eb4
+guid: 87769b73fbfb1fa44bb2bfe0b832e6a9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 300
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: slime
+      name: player
       rect:
         serializedVersion: 2
-        x: 120
-        y: 302
-        width: 224
-        height: 179
+        x: 0
+        y: 0
+        width: 662
+        height: 460
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,50 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 84ad899935c678e419673ce339c78a7c
-      internalID: -1461167803
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player-bullet
-      rect:
-        serializedVersion: 2
-        x: 688
-        y: 404
-        width: 65
-        height: 69
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1abe1ec4de4de9b4da42b027326e3803
-      internalID: -1473521494
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: slime-placeholder
-      rect:
-        serializedVersion: 2
-        x: 1695
-        y: 299
-        width: 225
-        height: 179
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a3567d395125e0346b68cc5ba579aea7
-      internalID: -745884173
+      spriteID: 01603a8089a99164a8e84ba38aabf369
+      internalID: 524246802
       vertices: []
       indices: 
       edges: []
@@ -183,9 +141,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      player-bullet: -1473521494
-      slime: -1461167803
-      slime-placeholder: -745884173
+      player: 524246802
+      player-bullet: -52919227
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
