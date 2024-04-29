@@ -12,6 +12,11 @@ public class EnemyHealthBar : MonoBehaviour
         {
             m_canvasGroup.alpha = 1;
         }
+
+        if (value <= 0)
+        {
+            m_canvasGroup.alpha = 0;
+        }
         m_healthBar.fillAmount = value;
     }
 }
