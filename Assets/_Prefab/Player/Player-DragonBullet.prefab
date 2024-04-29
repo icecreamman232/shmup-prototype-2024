@@ -222,5 +222,5 @@ MonoBehaviour:
   m_targetMask:
     serializedVersion: 2
     m_Bits: 128
-  m_minDamage: 5
-  m_maxDamage: 8
+  m_minDamage: 6
+  m_maxDamage: 10
