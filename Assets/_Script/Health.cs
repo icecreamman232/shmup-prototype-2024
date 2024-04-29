@@ -17,7 +17,7 @@ public class Health : MonoBehaviour
     {
         if (m_isInvulnerable) return;
         m_curHealth -= damage;
-
+        UpdateHealthUI();
         if (m_curHealth <= 0)
         {
             Kill();
@@ -25,6 +25,11 @@ public class Health : MonoBehaviour
         }
         
         StartCoroutine(OnInvulnerable());
+    }
+
+    protected virtual void UpdateHealthUI()
+    {
+        
     }
 
     protected virtual void Kill()

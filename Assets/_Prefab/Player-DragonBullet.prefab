@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_moveSpeed: 15
   m_limit: 7
+  m_damageHandler: {fileID: 6636980745367905671}
 --- !u!1 &7623713686968931470
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,4 +223,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   m_minDamage: 5
-  m_maxDamage: 10
+  m_maxDamage: 8

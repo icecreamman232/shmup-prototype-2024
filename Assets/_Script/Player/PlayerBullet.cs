@@ -1,12 +1,24 @@
+using System;
 using UnityEngine;
 
 public class PlayerBullet : MonoBehaviour
 {
     [SerializeField] private float m_moveSpeed;
     [SerializeField] private float m_limit;
+    [SerializeField] private DamageHandler m_damageHandler;
     
     private bool m_canUpdate;
-    
+
+    private void Start()
+    {
+        m_damageHandler.OnHit += OnHitTarget;
+    }
+
+    private void OnDestroy()
+    {
+        m_damageHandler.OnHit -= OnHitTarget;
+    }
+
     private void OnDisable()
     {
         m_canUpdate = false;
@@ -16,6 +28,11 @@ public class PlayerBullet : MonoBehaviour
     {
         transform.position = position;
         m_canUpdate = true;
+    }
+
+    private void OnHitTarget()
+    {
+        this.gameObject.SetActive(false);
     }
 
     private void Update()
