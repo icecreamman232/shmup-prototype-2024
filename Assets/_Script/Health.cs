@@ -15,7 +15,7 @@ public class Health : MonoBehaviour
         m_curHealth = m_maxHealth;
     }
     
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
         if (m_isInvulnerable) return;
         m_curHealth -= damage;
