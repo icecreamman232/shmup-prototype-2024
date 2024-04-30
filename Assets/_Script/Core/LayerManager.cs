@@ -6,6 +6,7 @@ namespace JustGame.Script.Manager
     {
         #region Tag
 
+        public static string CoinTag = "Item/Coin";
         
 
         #endregion
