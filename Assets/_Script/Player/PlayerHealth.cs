@@ -1,5 +1,6 @@
 
 using JustGame.Scripts.ScriptableEvent;
+using MoreMountains.Feedbacks;
 using UnityEngine;
 
 public class PlayerHealth : Health
@@ -8,6 +9,7 @@ public class PlayerHealth : Health
     [SerializeField] private bool m_NoDamage;
     #endif
     [SerializeField] private IntEvent m_updateHealthEvent;
+    [SerializeField] private MMF_Player m_flickerVFX;
 
     public override void TakeDamage(int damage)
     {
@@ -23,6 +25,7 @@ public class PlayerHealth : Health
     protected override void UpdateHealthUI()
     {
         m_updateHealthEvent.Raise(m_curHealth);
+        m_flickerVFX.PlayFeedbacks();
         base.UpdateHealthUI();
     }
 }

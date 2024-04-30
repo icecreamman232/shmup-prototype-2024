@@ -1,11 +1,11 @@
 using JustGame.Scripts.ScriptableEvent;
+using MoreMountains.Feedbacks;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerHealthBar : MonoBehaviour
 {
     [SerializeField] private IntEvent m_playerHealthEvent;
-    [SerializeField] private Image[] m_heartList;
+    [SerializeField] private MMF_Player[] m_feedbackList;
 
     private void Start()
     {
@@ -19,9 +19,6 @@ public class PlayerHealthBar : MonoBehaviour
 
     private void OnUpdatePlayerHealth(int curHealth)
     {
-        for (int i = m_heartList.Length - 1; i >= curHealth; i--)
-        {
-            m_heartList[i].gameObject.SetActive(false);
-        }
+        m_feedbackList[curHealth].PlayFeedbacks();
     }
 }
