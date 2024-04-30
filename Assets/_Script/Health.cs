@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ public class Health : MonoBehaviour
     [SerializeField] protected int m_curHealth;
     [SerializeField] protected float m_invulnerableDuration;
     protected bool m_isInvulnerable;
+    public Action OnDeath;
     
     protected virtual void Start()
     {
@@ -35,6 +37,7 @@ public class Health : MonoBehaviour
     protected virtual void Kill()
     {
         this.gameObject.SetActive(false);
+        OnDeath?.Invoke();
     }
 
     protected virtual IEnumerator OnInvulnerable()
