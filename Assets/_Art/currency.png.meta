@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c8bcdf22eb1d40f47a1e79a0e0980137
+guid: cf0f0acc423f8f24f8fdb63394f36f90
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,22 +110,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: coin_0
+      name: coin
       rect:
         serializedVersion: 2
-        x: 20
-        y: 18
-        width: 305
-        height: 309
+        x: 22
+        y: 20
+        width: 302
+        height: 308
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6f3a460242f772942b6c33c33393c207
-      internalID: -355552109
+      spriteID: 5f3af531373b0a34cbf0525782975658
+      internalID: 26728134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gem
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 31
+        width: 292
+        height: 282
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16202ac986ad1fd4d8d91ad31d05e4da
+      internalID: -664172275
       vertices: []
       indices: 
       edges: []
@@ -141,7 +162,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      coin_0: -355552109
+      coin: 26728134
+      gem: -664172275
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

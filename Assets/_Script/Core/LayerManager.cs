@@ -7,7 +7,7 @@ namespace JustGame.Script.Manager
         #region Tag
 
         public static string CoinTag = "Item/Coin";
-        
+        public static string GemTag = "Item/Gem";
 
         #endregion
         
