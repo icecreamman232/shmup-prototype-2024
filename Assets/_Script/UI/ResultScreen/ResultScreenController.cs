@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using JustGame.Scripts.ScriptableEvent;
 using UnityEngine;
 
@@ -19,6 +20,12 @@ public class ResultScreenController : MonoBehaviour
 
     private void OnTimeOver()
     {
+        StartCoroutine(ShowScreen());
+    }
+
+    private IEnumerator ShowScreen()
+    {
+        yield return new WaitForSecondsRealtime(1f);
         m_view.Show();
     }
 }

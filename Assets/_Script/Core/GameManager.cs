@@ -1,10 +1,10 @@
-using System;
 using JustGame.Script.Manager;
 using JustGame.Scripts.ScriptableEvent;
 using MoreMountains.Feedbacks;
+using MoreMountains.Tools;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MMSingleton<GameManager>
 {
     [Header("Wave")]
     [SerializeField] private int m_initWave;
@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int m_curXP;
     [SerializeField] private int m_curLevel;
     [SerializeField] private int m_initLevel;
+    //how many player level up during a run
+    [SerializeField] private int m_levelUpCounter; 
     [SerializeField] private MMF_Player m_levelUpSFX;
 
     [Header("Dragon")] 
@@ -33,6 +35,7 @@ public class GameManager : MonoBehaviour
     {
         m_xpEarnEvent.AddListener(OnEarnXP);
         NextWave(isFirstWave: true);
+        m_levelUpCounter = 0;
         m_curLevel = m_initLevel;
         m_levelUpEvent.Raise(m_curLevel); //send level info to HUD
         GetDragonInfo();
@@ -49,6 +52,7 @@ public class GameManager : MonoBehaviour
         if (m_curXP >= m_maxXP)
         {
             m_curLevel++;
+            m_levelUpCounter++;
             m_levelUpEvent.Raise(m_curLevel);
             m_levelUpSFX.PlayFeedbacks();
             GetDragonInfo();
@@ -63,7 +67,7 @@ public class GameManager : MonoBehaviour
         m_updateXPBarEvent.Raise(MathHelpers.Remap(m_curXP,0,m_maxXP,0,1));
     }
 
-    private void NextWave(bool isFirstWave = false)
+    public void NextWave(bool isFirstWave = false)
     {
         if (isFirstWave)
         {
@@ -73,7 +77,8 @@ public class GameManager : MonoBehaviour
         {
             m_curWave++;
         }
-        
+
+        m_levelUpCounter = 0;
         m_waveEvent.Raise(m_curWave);
         m_timeManager.SetTime(m_waveMinute, m_waveSeconds);
     }

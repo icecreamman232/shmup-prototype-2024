@@ -8,7 +8,8 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private int m_curMinutes;
     [SerializeField] private TimeEvent m_timeEvent;
     [SerializeField] private ActionEvent m_timeOverEvent;
-
+    [SerializeField] private EnemySpawner[] m_enemySpawner;
+    
     private float m_timer;
     private bool m_canUpdate;
     
@@ -57,15 +58,24 @@ public class TimeManager : MonoBehaviour
         m_curSeconds = waveSeconds;
         m_timeEvent.Raise(m_curMinutes, m_curSeconds);
         m_canUpdate = true;
+        UnPauseGame();
     }
 
     private void PauseGame()
     {
+        foreach (var spawner in m_enemySpawner)
+        {
+            spawner.StopSpawn();
+        }
         Time.timeScale = 0;
     }
 
     private void UnPauseGame()
     {
+        foreach (var spawner in m_enemySpawner)
+        {
+            spawner.StartSpawn();
+        }
         Time.timeScale = 1;
     }
 }

@@ -178,6 +178,7 @@ MonoBehaviour:
   m_healthBar: {fileID: 7202609122466654448}
   m_spriteRenderer: {fileID: 8144037088831928276}
   m_deathAnim: {fileID: 7363478237701457421}
+  m_OnTimeOverEvent: {fileID: 11400000, guid: a7e6b35195433304089885e4e6b19b1e, type: 2}
   m_deathSFX: {fileID: 3851194775646447600}
 --- !u!114 &6338294901942275748
 MonoBehaviour:

@@ -5,6 +5,11 @@ public class EnemyHealthBar : MonoBehaviour
 {
     [SerializeField] private Image m_healthBar;
     [SerializeField] private CanvasGroup m_canvasGroup;
+
+    public void Hide()
+    {
+        m_canvasGroup.alpha = 0;
+    }
     
     public void UpdateHealthBar(float value)
     {
