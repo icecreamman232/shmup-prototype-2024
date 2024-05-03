@@ -7,7 +7,8 @@ public class ResultScreenController : MonoBehaviour
 {
     [SerializeField] private ResultScreenView m_view;
     [SerializeField] private ActionEvent m_timeOverEvent;
-    
+
+    [SerializeField] private UpgradeScreenController m_upgradeScreenController;
     private void Start()
     {
         m_timeOverEvent.AddListener(OnTimeOver);
@@ -27,5 +28,6 @@ public class ResultScreenController : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(1f);
         m_view.Show();
+        m_upgradeScreenController.ShowUpgrade();
     }
 }

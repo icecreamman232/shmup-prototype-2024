@@ -33,4 +33,9 @@ public class PlayerHealth : Health
         m_flickerVFX.PlayFeedbacks();
         base.UpdateHealthUI();
     }
+
+    public void IncreaseMaxHealth(int addValue)
+    {
+        m_maxHealth += addValue;
+    }
 }

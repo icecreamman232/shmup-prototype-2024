@@ -8,10 +8,9 @@ public class PlayerWeapon : MonoBehaviour
     [SerializeField] private Transform m_shootPivot;
     [SerializeField] private ObjectPooler m_bulletPooler;
     [SerializeField] private float m_delayBetweenTwoShot;
-
+    [SerializeField] private int m_increaseDamage; //use for when player apply damage upgrade
     private bool m_isDelay;
     
-
     private void Update()
     {
         if (Input.GetKey(m_shootButton) && !m_isDelay)
@@ -26,7 +25,7 @@ public class PlayerWeapon : MonoBehaviour
         var bulletGO = m_bulletPooler.GetPooledGameObject();
         var bullet = bulletGO.GetComponent<PlayerBullet>();
         if (bullet == null) return;
-        bullet.SpawnBullet(m_shootPivot.position);
+        bullet.SpawnBullet(m_shootPivot.position, m_increaseDamage);
         
         StartCoroutine(OnDelayShoot());
     }
@@ -38,4 +37,9 @@ public class PlayerWeapon : MonoBehaviour
         m_isDelay = false;
     }
 
+
+    public void IncreaseDamage(int addValue)
+    {
+        m_increaseDamage += addValue;
+    }
 }

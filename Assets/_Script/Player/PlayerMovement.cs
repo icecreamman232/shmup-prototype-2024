@@ -33,6 +33,11 @@ namespace JustGame.Script.Player
                 transform.position = pos;
             }
         }
+
+        public void IncreaseMaxSpeed(int addValue)
+        {
+            m_moveSpeed += addValue;
+        }
     }
 }
 

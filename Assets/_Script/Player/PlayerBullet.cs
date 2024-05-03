@@ -24,8 +24,9 @@ public class PlayerBullet : MonoBehaviour
         m_canUpdate = false;
     }
 
-    public void SpawnBullet(Vector2 position)
+    public void SpawnBullet(Vector2 position, int damageUpgrade = 0)
     {
+        m_damageHandler.IncreaseDamage(damageUpgrade);
         transform.position = position;
         m_canUpdate = true;
     }
