@@ -1,13 +1,15 @@
-using JustGame.Scripts.ScriptableEvent;
-using MoreMountains.Feedbacks;
+using JustGame.Script.Manager;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealthBar : MonoBehaviour
 {
-    [SerializeField] private IntEvent m_playerHealthEvent;
-    [SerializeField] private MMF_Player[] m_feedbackList;
+    [SerializeField] private HealthEvent m_playerHealthEvent;
+    [SerializeField] private TextMeshProUGUI m_healthTxt;
+    [SerializeField] private Image m_healthBar;
 
-    private void Start()
+    private void Awake()
     {
         m_playerHealthEvent.AddListener(OnUpdatePlayerHealth);
     }
@@ -17,8 +19,9 @@ public class PlayerHealthBar : MonoBehaviour
         m_playerHealthEvent.RemoveListener(OnUpdatePlayerHealth);
     }
 
-    private void OnUpdatePlayerHealth(int curHealth)
+    private void OnUpdatePlayerHealth(int cur, int max)
     {
-        m_feedbackList[curHealth].PlayFeedbacks();
+        m_healthBar.fillAmount = MathHelpers.Remap(cur,0,max,0,1);
+        m_healthTxt.text = $"{cur}/{max}";
     }
 }

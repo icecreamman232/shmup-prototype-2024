@@ -210,8 +210,8 @@ MonoBehaviour:
   m_targetMask:
     serializedVersion: 2
     m_Bits: 64
-  m_minDamage: 1
-  m_maxDamage: 1
+  m_minDamage: 2
+  m_maxDamage: 3
 --- !u!1 &2712080316426566492
 GameObject:
   m_ObjectHideFlags: 0
