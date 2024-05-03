@@ -5,6 +5,7 @@ using UnityEngine;
 public enum GameEvent
 {
     RESPAWN_PLAYER,
+    TIME_OVER,
 }
 
 [CreateAssetMenu(menuName = "JustGame/Game Event")]

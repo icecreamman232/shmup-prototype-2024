@@ -1,7 +1,6 @@
 using System.Collections;
 using JustGame.Script.Manager;
 using JustGame.Scripts.Common;
-using JustGame.Scripts.ScriptableEvent;
 using MoreMountains.Feedbacks;
 using UnityEngine;
 
@@ -10,7 +9,7 @@ public class EnemyHealth : Health
     [SerializeField] private EnemyHealthBar m_healthBar;
     [SerializeField] private SpriteRenderer m_spriteRenderer;
     [SerializeField] private AnimationParameter m_deathAnim;
-    [SerializeField] private ActionEvent m_OnTimeOverEvent;
+    [SerializeField] private GameEventSO m_gameEvent;
     [SerializeField] private MMF_Player m_deathSFX;
 
     private bool m_isInstantKill;
@@ -23,15 +22,20 @@ public class EnemyHealth : Health
 
     protected override void Start()
     {
-        m_OnTimeOverEvent.AddListener(OnTimeOver);
+        m_gameEvent.AddListener(OnUpdateGameEvent);
         base.Start();
     }
 
-    private void OnTimeOver()
+    private void OnUpdateGameEvent(GameEvent incomingEvent)
     {
-        if (this == null) return;
-        m_isInstantKill = true;
-        TakeDamage(m_maxHealth);
+        switch (incomingEvent)
+        {
+            case GameEvent.TIME_OVER:
+                if (this == null) return;
+                m_isInstantKill = true;
+                TakeDamage(m_maxHealth);
+                break;
+        }
     }
     
     protected override void Kill()
@@ -54,7 +58,7 @@ public class EnemyHealth : Health
         {
             OnDeath?.Invoke();
         }
-        m_OnTimeOverEvent.RemoveListener(OnTimeOver);
+        m_gameEvent.RemoveListener(OnUpdateGameEvent);
         Destroy(this.gameObject);
     }
 }

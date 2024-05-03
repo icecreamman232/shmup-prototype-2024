@@ -1,25 +1,28 @@
-using System;
-using JustGame.Scripts.ScriptableEvent;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private float m_limit;
     [SerializeField] private float m_moveSpeed;
-    [SerializeField] private ActionEvent m_timeOverEvent;
+    [SerializeField] private GameEventSO m_gameEvent;
 
     private bool m_canMove;
     
     private void Start()
     {
-        m_timeOverEvent.AddListener(OnTimeOver);
+        m_gameEvent.AddListener(OnUpdateGameEvent);
         m_canMove = true;
     }
 
-    private void OnTimeOver()
+    private void OnUpdateGameEvent(GameEvent incomingEvent)
     {
-        m_canMove = false;
-        m_timeOverEvent.RemoveListener(OnTimeOver);
+        switch (incomingEvent)
+        {
+            case GameEvent.TIME_OVER:
+                m_canMove = false;
+                m_gameEvent.RemoveListener(OnUpdateGameEvent);
+                break;
+        }
     }
 
     private void Update()

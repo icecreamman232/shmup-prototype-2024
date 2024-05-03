@@ -1,26 +1,31 @@
-using System;
-using JustGame.Scripts.ScriptableEvent;
 using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
     [SerializeField] private float m_limit;
-    [SerializeField] private ActionEvent m_timeOverEvent;
+    [SerializeField] private GameEventSO m_gameEvent;
 
     private void Start()
     {
-        m_timeOverEvent.AddListener(OnTimeOver);
+        m_gameEvent.AddListener(OnUpdateGameEvent);
         
     }
 
-    private void OnTimeOver()
+    private void OnUpdateGameEvent(GameEvent incomingEvent)
     {
-        Destroy(this.gameObject);
+        switch (incomingEvent)
+        {
+            case GameEvent.RESPAWN_PLAYER:
+                break;
+            case GameEvent.TIME_OVER:
+                Destroy(this.gameObject);
+                break;
+        }
     }
 
     private void OnDestroy()
     {
-        m_timeOverEvent.RemoveListener(OnTimeOver);
+        m_gameEvent.RemoveListener(OnUpdateGameEvent);
     }
 
     private void Update()

@@ -178,7 +178,7 @@ MonoBehaviour:
   m_healthBar: {fileID: 7202609122466654448}
   m_spriteRenderer: {fileID: 8144037088831928276}
   m_deathAnim: {fileID: 7363478237701457421}
-  m_OnTimeOverEvent: {fileID: 11400000, guid: a7e6b35195433304089885e4e6b19b1e, type: 2}
+  m_gameEvent: {fileID: 11400000, guid: 614bdb5a7e81c6445ab8f6e75564932c, type: 2}
   m_deathSFX: {fileID: 3851194775646447600}
 --- !u!114 &6338294901942275748
 MonoBehaviour:
@@ -194,7 +194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_limit: 6
   m_moveSpeed: 2
-  m_timeOverEvent: {fileID: 11400000, guid: a7e6b35195433304089885e4e6b19b1e, type: 2}
+  m_gameEvent: {fileID: 11400000, guid: 614bdb5a7e81c6445ab8f6e75564932c, type: 2}
 --- !u!114 &8735610005832148144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,6 +212,7 @@ MonoBehaviour:
     m_Bits: 64
   m_minDamage: 2
   m_maxDamage: 3
+  m_increaseDamage: 0
 --- !u!1 &2712080316426566492
 GameObject:
   m_ObjectHideFlags: 0

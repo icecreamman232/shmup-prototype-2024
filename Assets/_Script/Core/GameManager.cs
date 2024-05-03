@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using JustGame.Script.Manager;
 using JustGame.Scripts.ScriptableEvent;
@@ -11,6 +12,8 @@ public class GameManager : MMSingleton<GameManager>
     [Header("Player")] 
     [SerializeField] private GameObject m_playerPrefab;
     [SerializeField] private Vector3 m_spawnPos;
+    private GameObject m_player;
+    
     [Header("Wave")]
     [SerializeField] private int m_initWave;
     [SerializeField] private int m_curWave;
@@ -39,14 +42,11 @@ public class GameManager : MMSingleton<GameManager>
     private void Start()
     {
         m_xpEarnEvent.AddListener(OnEarnXP);
-
-        StartCoroutine(LoadLevel());
-        
-        NextWave(isFirstWave: true);
-        m_levelUpCounter = 0;
+        m_gameEventSO.AddListener(OnUpdateGameEvent);
         m_curLevel = m_initLevel;
         m_levelUpEvent.Raise(m_curLevel); //send level info to HUD
-        GetDragonInfo();
+        
+        StartCoroutine(LoadLevel());
     }
 
     private IEnumerator LoadLevel()
@@ -57,8 +57,26 @@ public class GameManager : MMSingleton<GameManager>
         //TODO: Play player respawn anim;
         yield return new WaitForSeconds(0.3f);
         m_gameEventSO.Raise(GameEvent.RESPAWN_PLAYER);
+        
+        UpgradeManager.Instance.ApplyUpgrades(m_player);
+        m_timeManager.SetTime(m_waveMinute, m_waveSeconds);
+        GetDragonInfo();
+        
+        //Spawn wave
+        NextWave(isFirstWave: true);
     }
     
+    private void OnUpdateGameEvent(GameEvent incomingEvent)
+    {
+        switch (incomingEvent)
+        {
+            case GameEvent.RESPAWN_PLAYER:
+                break;
+            case GameEvent.TIME_OVER:
+                PauseGame();
+                break;
+        }
+    }
 
     private void OnDestroy()
     {
@@ -97,10 +115,18 @@ public class GameManager : MMSingleton<GameManager>
             m_curWave++;
         }
         
-        UpgradeManager.Instance.ApplyUpgrades();
-        
         m_levelUpCounter = 0;
+        //Update wave counter UI
         m_waveEvent.Raise(m_curWave);
-        m_timeManager.SetTime(m_waveMinute, m_waveSeconds);
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void UnPauseGame()
+    {
+        Time.timeScale = 1;
     }
 }

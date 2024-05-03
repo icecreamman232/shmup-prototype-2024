@@ -1,27 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
-using JustGame.Scripts.ScriptableEvent;
 using UnityEngine;
 
 public class Gem : MonoBehaviour
 {
     [SerializeField] private float m_limit;
-    [SerializeField] private ActionEvent m_timeOverEvent;
+    [SerializeField] private GameEventSO m_gameEvent;
 
     private void Start()
     {
-        m_timeOverEvent.AddListener(OnTimeOver);
+        m_gameEvent.AddListener(OnUpdateGameEvent);
         
     }
 
-    private void OnTimeOver()
+    private void OnUpdateGameEvent(GameEvent incomingEvent)
     {
         Destroy(this.gameObject);
     }
 
     private void OnDestroy()
     {
-        m_timeOverEvent.RemoveListener(OnTimeOver);
+        m_gameEvent.RemoveListener(OnUpdateGameEvent);
     }
     private void Update()
     {

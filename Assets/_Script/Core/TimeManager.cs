@@ -1,4 +1,3 @@
-using JustGame.Scripts.ScriptableEvent;
 using UnityEngine;
 
 public class TimeManager : MonoBehaviour
@@ -6,13 +5,45 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private float m_timeInterval;
     [SerializeField] private int m_curSeconds;
     [SerializeField] private int m_curMinutes;
+    [SerializeField] private GameEventSO m_gameEvent;
     [SerializeField] private TimeEvent m_timeEvent;
-    [SerializeField] private ActionEvent m_timeOverEvent;
-    [SerializeField] private EnemySpawner[] m_enemySpawner;
     
     private float m_timer;
     private bool m_canUpdate;
-    
+
+    private void Awake()
+    {
+        m_gameEvent.AddListener(OnUpdateGameEvent);
+    }
+
+    private void OnDestroy()
+    {
+        m_gameEvent.RemoveListener(OnUpdateGameEvent);
+    }
+
+    private void OnUpdateGameEvent(GameEvent incomingEvent)
+    {
+        switch (incomingEvent)
+        {
+            case GameEvent.RESPAWN_PLAYER:
+                PlayTime();
+                break;
+            case GameEvent.TIME_OVER:
+                PauseTime();
+                break;
+        }
+    }
+
+    private void PlayTime()
+    {
+        m_canUpdate = true;
+    }
+
+    private void PauseTime()
+    {
+        m_canUpdate = false;
+    }
+
     private void ResetData()
     {
         m_curMinutes = 0;
@@ -46,8 +77,8 @@ public class TimeManager : MonoBehaviour
         
         if (m_curMinutes >= 0) return;
         m_timeEvent.Raise(0, 0);
-        m_timeOverEvent.Raise();
-        PauseGame();
+        
+        m_gameEvent.Raise(GameEvent.TIME_OVER);
         m_canUpdate = false;
     }
 
@@ -58,26 +89,5 @@ public class TimeManager : MonoBehaviour
         m_curSeconds = waveSeconds;
         m_timeEvent.Raise(m_curMinutes, m_curSeconds);
         m_canUpdate = true;
-        UnPauseGame();
-    }
-
-    private void PauseGame()
-    {
-        m_canUpdate = false;
-        foreach (var spawner in m_enemySpawner)
-        {
-            spawner.StopSpawn();
-        }
-        Time.timeScale = 0;
-    }
-
-    private void UnPauseGame()
-    {
-        m_canUpdate = true;
-        foreach (var spawner in m_enemySpawner)
-        {
-            spawner.StartSpawn();
-        }
-        Time.timeScale = 1;
     }
 }

@@ -359,6 +359,7 @@ MonoBehaviour:
   m_spawnPivot: {fileID: 15831717}
   m_minDelaySpawn: 2
   m_maxDelaySpawn: 4
+  m_gameEvent: {fileID: 11400000, guid: 614bdb5a7e81c6445ab8f6e75564932c, type: 2}
 --- !u!1 &22748535
 GameObject:
   m_ObjectHideFlags: 0
@@ -945,6 +946,7 @@ MonoBehaviour:
   m_spawnPivot: {fileID: 492914931}
   m_minDelaySpawn: 2
   m_maxDelaySpawn: 4
+  m_gameEvent: {fileID: 11400000, guid: 614bdb5a7e81c6445ab8f6e75564932c, type: 2}
 --- !u!1001 &501867832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1371,14 +1373,8 @@ MonoBehaviour:
   m_timeInterval: 1
   m_curSeconds: 0
   m_curMinutes: 0
+  m_gameEvent: {fileID: 11400000, guid: 614bdb5a7e81c6445ab8f6e75564932c, type: 2}
   m_timeEvent: {fileID: 11400000, guid: 3eb9f036eaefea14cb73cc4f514cfc8d, type: 2}
-  m_timeOverEvent: {fileID: 11400000, guid: a7e6b35195433304089885e4e6b19b1e, type: 2}
-  m_enemySpawner:
-  - {fileID: 1679907831}
-  - {fileID: 867902275}
-  - {fileID: 492914932}
-  - {fileID: 15831718}
-  - {fileID: 1658233698}
 --- !u!114 &544015382 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8187314585274806224, guid: 0554992a68c362343a634961c7fb3e0a, type: 3}
@@ -2277,6 +2273,7 @@ MonoBehaviour:
   m_spawnPivot: {fileID: 867902274}
   m_minDelaySpawn: 2
   m_maxDelaySpawn: 4
+  m_gameEvent: {fileID: 11400000, guid: 614bdb5a7e81c6445ab8f6e75564932c, type: 2}
 --- !u!1 &919835545
 GameObject:
   m_ObjectHideFlags: 0
@@ -3473,6 +3470,7 @@ MonoBehaviour:
   m_spawnPivot: {fileID: 1658233697}
   m_minDelaySpawn: 2
   m_maxDelaySpawn: 4
+  m_gameEvent: {fileID: 11400000, guid: 614bdb5a7e81c6445ab8f6e75564932c, type: 2}
 --- !u!1 &1669366392
 GameObject:
   m_ObjectHideFlags: 0
@@ -3597,6 +3595,7 @@ MonoBehaviour:
   m_spawnPivot: {fileID: 1679907830}
   m_minDelaySpawn: 2
   m_maxDelaySpawn: 4
+  m_gameEvent: {fileID: 11400000, guid: 614bdb5a7e81c6445ab8f6e75564932c, type: 2}
 --- !u!224 &1723512880 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 761314471537673985, guid: 0554992a68c362343a634961c7fb3e0a, type: 3}
@@ -3931,7 +3930,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_view: {fileID: 1785231552}
-  m_timeOverEvent: {fileID: 11400000, guid: a7e6b35195433304089885e4e6b19b1e, type: 2}
+  m_gameEvent: {fileID: 11400000, guid: 614bdb5a7e81c6445ab8f6e75564932c, type: 2}
   m_upgradeScreenController: {fileID: 919835547}
 --- !u!114 &1785231552
 MonoBehaviour:

@@ -5,7 +5,6 @@ using Random = UnityEngine.Random;
 
 public class UpgradeManager : MMSingleton<UpgradeManager>
 {
-    [SerializeField] private GameObject m_player; //placeholder;
     [SerializeField] private UpgradeDataBase[] m_upgradeList;
     [SerializeField] private List<UpgradeDataBase> m_chosenList;
 
@@ -31,11 +30,12 @@ public class UpgradeManager : MMSingleton<UpgradeManager>
         m_chosenList.Add(upgrade);
     }
 
-    public void ApplyUpgrades()
+    public void ApplyUpgrades(GameObject player)
     {
+        if (m_chosenList.Count <= 0) return;
         for (int i = 0; i < m_chosenList.Count; i++)
         {
-            m_chosenList[i].ApplyUpgrade(m_player);
+            m_chosenList[i].ApplyUpgrade(player);
         }
     }
 }
