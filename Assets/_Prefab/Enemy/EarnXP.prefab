@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_xp: 5
-  m_xpEarnEvent: {fileID: 11400000, guid: 30590c5421f8b274eb62a4f29341788e, type: 2}
+  m_xpEarnEvent: {fileID: 11400000, guid: aa1cb6e04ce7027469619d8eb27fbbd6, type: 2}
   m_health: {fileID: 0}
