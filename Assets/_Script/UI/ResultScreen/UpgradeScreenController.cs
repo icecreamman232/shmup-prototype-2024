@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class UpgradeScreenController : MonoBehaviour
 {
+    [SerializeField] private ResultScreenController m_resultScreenController;
     [SerializeField] private UpgradeButton[] m_buttons;
 
     public void ShowUpgrade()
@@ -17,5 +18,7 @@ public class UpgradeScreenController : MonoBehaviour
     public void OnChooseUpgrade(UpgradeButton button)
     {
         UpgradeManager.Instance.AddChosenUpgrade(button.Upgrade);
+        m_resultScreenController.Hide();
+        GameManager.Instance.NextWave();
     }
 }

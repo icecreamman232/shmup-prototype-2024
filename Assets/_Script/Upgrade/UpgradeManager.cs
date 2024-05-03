@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using MoreMountains.Tools;
 using UnityEngine;
@@ -6,6 +5,7 @@ using Random = UnityEngine.Random;
 
 public class UpgradeManager : MMSingleton<UpgradeManager>
 {
+    [SerializeField] private GameObject m_player; //placeholder;
     [SerializeField] private UpgradeDataBase[] m_upgradeList;
     [SerializeField] private List<UpgradeDataBase> m_chosenList;
 
@@ -29,5 +29,13 @@ public class UpgradeManager : MMSingleton<UpgradeManager>
     public void AddChosenUpgrade(UpgradeDataBase upgrade)
     {
         m_chosenList.Add(upgrade);
+    }
+
+    public void ApplyUpgrades()
+    {
+        for (int i = 0; i < m_chosenList.Count; i++)
+        {
+            m_chosenList[i].ApplyUpgrade(m_player);
+        }
     }
 }

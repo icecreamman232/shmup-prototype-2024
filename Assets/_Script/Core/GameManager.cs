@@ -1,3 +1,4 @@
+using System.Collections;
 using JustGame.Script.Manager;
 using JustGame.Scripts.ScriptableEvent;
 using MoreMountains.Feedbacks;
@@ -6,6 +7,10 @@ using UnityEngine;
 
 public class GameManager : MMSingleton<GameManager>
 {
+    [SerializeField] private GameEventSO m_gameEventSO;
+    [Header("Player")] 
+    [SerializeField] private GameObject m_playerPrefab;
+    [SerializeField] private Vector3 m_spawnPos;
     [Header("Wave")]
     [SerializeField] private int m_initWave;
     [SerializeField] private int m_curWave;
@@ -34,12 +39,26 @@ public class GameManager : MMSingleton<GameManager>
     private void Start()
     {
         m_xpEarnEvent.AddListener(OnEarnXP);
+
+        StartCoroutine(LoadLevel());
+        
         NextWave(isFirstWave: true);
         m_levelUpCounter = 0;
         m_curLevel = m_initLevel;
         m_levelUpEvent.Raise(m_curLevel); //send level info to HUD
         GetDragonInfo();
     }
+
+    private IEnumerator LoadLevel()
+    {
+        //Spawn player
+        Instantiate(m_playerPrefab, m_spawnPos, Quaternion.identity);
+        
+        //TODO: Play player respawn anim;
+        yield return new WaitForSeconds(0.3f);
+        m_gameEventSO.Raise(GameEvent.RESPAWN_PLAYER);
+    }
+    
 
     private void OnDestroy()
     {
@@ -77,7 +96,9 @@ public class GameManager : MMSingleton<GameManager>
         {
             m_curWave++;
         }
-
+        
+        UpgradeManager.Instance.ApplyUpgrades();
+        
         m_levelUpCounter = 0;
         m_waveEvent.Raise(m_curWave);
         m_timeManager.SetTime(m_waveMinute, m_waveSeconds);

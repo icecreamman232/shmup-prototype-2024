@@ -414,7 +414,7 @@ MonoBehaviour:
   m_maxHealth: 10
   m_curHealth: 0
   m_invulnerableDuration: 0.5
-  m_NoDamage: 1
+  m_NoDamage: 0
   m_updateHealthEvent: {fileID: 11400000, guid: 8dcf8d2295952b84989619d18c0b73e4, type: 2}
   m_flickerVFX: {fileID: 146549103471864959}
 --- !u!114 &4325414451220775741
@@ -433,6 +433,7 @@ MonoBehaviour:
   m_shootPivot: {fileID: 8271352189681996793}
   m_bulletPooler: {fileID: 4194016071595242437}
   m_delayBetweenTwoShot: 0.15
+  m_increaseDamage: 0
 --- !u!114 &4194016071595242437
 MonoBehaviour:
   m_ObjectHideFlags: 0

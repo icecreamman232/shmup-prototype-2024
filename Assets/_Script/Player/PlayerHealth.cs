@@ -34,8 +34,14 @@ public class PlayerHealth : Health
         base.UpdateHealthUI();
     }
 
+    public void ResetHealth()
+    {
+        m_curHealth = m_maxHealth;
+    }
+    
     public void IncreaseMaxHealth(int addValue)
     {
         m_maxHealth += addValue;
+        m_updateHealthEvent.Raise(m_curHealth,m_maxHealth);
     }
 }

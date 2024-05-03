@@ -19,11 +19,16 @@ public class ResultScreenController : MonoBehaviour
         m_timeOverEvent.RemoveListener(OnTimeOver);
     }
 
+    public void Hide()
+    {
+        m_view.Hide();
+    }
+    
     private void OnTimeOver()
     {
         StartCoroutine(ShowScreen());
     }
-
+    
     private IEnumerator ShowScreen()
     {
         yield return new WaitForSecondsRealtime(1f);
