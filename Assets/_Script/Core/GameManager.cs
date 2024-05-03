@@ -109,13 +109,13 @@ public class GameManager : MMSingleton<GameManager>
             m_levelUpEvent.Raise(m_curLevel);
             m_levelUpSFX.PlayFeedbacks();
             GetDragonInfo();
+            m_curXP = 0;
         }
         m_updateXPBarEvent.Raise(MathHelpers.Remap(m_curXP,0,m_maxXP,0,1));
     }
 
     private void GetDragonInfo()
     {
-        m_curXP = 0;
         m_maxXP = m_curDragonData.GetMaxXPAtLvl(m_curLevel);
         m_updateXPBarEvent.Raise(MathHelpers.Remap(m_curXP,0,m_maxXP,0,1));
     }
