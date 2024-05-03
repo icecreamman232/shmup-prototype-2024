@@ -194,6 +194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_limit: 6
   m_moveSpeed: 2
+  m_timeOverEvent: {fileID: 11400000, guid: a7e6b35195433304089885e4e6b19b1e, type: 2}
 --- !u!114 &8735610005832148144
 MonoBehaviour:
   m_ObjectHideFlags: 0

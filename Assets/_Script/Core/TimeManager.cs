@@ -63,6 +63,7 @@ public class TimeManager : MonoBehaviour
 
     private void PauseGame()
     {
+        m_canUpdate = false;
         foreach (var spawner in m_enemySpawner)
         {
             spawner.StopSpawn();
@@ -72,6 +73,7 @@ public class TimeManager : MonoBehaviour
 
     private void UnPauseGame()
     {
+        m_canUpdate = true;
         foreach (var spawner in m_enemySpawner)
         {
             spawner.StartSpawn();

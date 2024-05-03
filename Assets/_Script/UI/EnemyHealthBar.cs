@@ -13,6 +13,10 @@ public class EnemyHealthBar : MonoBehaviour
     
     public void UpdateHealthBar(float value)
     {
+        if (m_canvasGroup == null)
+        {
+            return;
+        }
         if (m_canvasGroup.alpha == 0)
         {
             m_canvasGroup.alpha = 1;

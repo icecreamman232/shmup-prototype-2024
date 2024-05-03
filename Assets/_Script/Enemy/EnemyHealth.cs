@@ -29,8 +29,9 @@ public class EnemyHealth : Health
 
     private void OnTimeOver()
     {
+        if (this == null) return;
         m_isInstantKill = true;
-        TakeDamage(m_curHealth);
+        TakeDamage(m_maxHealth);
     }
     
     protected override void Kill()
@@ -44,16 +45,16 @@ public class EnemyHealth : Health
         {
             yield break;
         }
-
         m_isInvulnerable = true;
         m_spriteRenderer.enabled = false;
         m_deathAnim.SetTrigger();
         m_deathSFX.PlayFeedbacks();
-        yield return new WaitForSeconds(m_deathAnim.Duration);
+        yield return new WaitForSecondsRealtime(m_deathAnim.Duration);
         if (!m_isInstantKill)
         {
             OnDeath?.Invoke();
         }
+        m_OnTimeOverEvent.RemoveListener(OnTimeOver);
         Destroy(this.gameObject);
     }
 }

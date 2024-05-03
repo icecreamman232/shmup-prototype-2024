@@ -1265,6 +1265,12 @@ MonoBehaviour:
   m_curMinutes: 0
   m_timeEvent: {fileID: 11400000, guid: 3eb9f036eaefea14cb73cc4f514cfc8d, type: 2}
   m_timeOverEvent: {fileID: 11400000, guid: a7e6b35195433304089885e4e6b19b1e, type: 2}
+  m_enemySpawner:
+  - {fileID: 1679907831}
+  - {fileID: 867902275}
+  - {fileID: 492914932}
+  - {fileID: 15831718}
+  - {fileID: 1658233698}
 --- !u!1 &552781923
 GameObject:
   m_ObjectHideFlags: 0
