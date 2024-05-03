@@ -49,21 +49,37 @@ public class GameManager : MMSingleton<GameManager>
         StartCoroutine(LoadLevel());
     }
 
+    public void LoadNextLevel()
+    {
+        StartCoroutine(LoadLevel());
+    }
+    
     private IEnumerator LoadLevel()
     {
+
+        if (m_player != null)
+        {
+            Destroy(m_player.gameObject);
+        }
+
+        yield return new WaitForSecondsRealtime(0.3f);
+        
         //Spawn player
-        Instantiate(m_playerPrefab, m_spawnPos, Quaternion.identity);
+        m_player = Instantiate(m_playerPrefab, m_spawnPos, Quaternion.identity);
         
         //TODO: Play player respawn anim;
-        yield return new WaitForSeconds(0.3f);
-        m_gameEventSO.Raise(GameEvent.RESPAWN_PLAYER);
+        yield return new WaitForSecondsRealtime(0.3f);
         
         UpgradeManager.Instance.ApplyUpgrades(m_player);
+        m_gameEventSO.Raise(GameEvent.RESPAWN_PLAYER);
+        
+        
         m_timeManager.SetTime(m_waveMinute, m_waveSeconds);
         GetDragonInfo();
-        
         //Spawn wave
-        NextWave(isFirstWave: true);
+        NextWave();
+        
+        UnPauseGame();
     }
     
     private void OnUpdateGameEvent(GameEvent incomingEvent)
@@ -104,17 +120,9 @@ public class GameManager : MMSingleton<GameManager>
         m_updateXPBarEvent.Raise(MathHelpers.Remap(m_curXP,0,m_maxXP,0,1));
     }
 
-    public void NextWave(bool isFirstWave = false)
+    public void NextWave()
     {
-        if (isFirstWave)
-        {
-            m_curWave = m_initWave;
-        }
-        else
-        {
-            m_curWave++;
-        }
-        
+        m_curWave++;
         m_levelUpCounter = 0;
         //Update wave counter UI
         m_waveEvent.Raise(m_curWave);

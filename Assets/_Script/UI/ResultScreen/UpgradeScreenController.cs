@@ -19,6 +19,6 @@ public class UpgradeScreenController : MonoBehaviour
     {
         UpgradeManager.Instance.AddChosenUpgrade(button.Upgrade);
         m_resultScreenController.Hide();
-        GameManager.Instance.NextWave();
+        GameManager.Instance.LoadNextLevel();
     }
 }

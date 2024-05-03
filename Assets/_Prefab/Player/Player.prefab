@@ -416,6 +416,7 @@ MonoBehaviour:
   m_invulnerableDuration: 0.5
   m_NoDamage: 0
   m_updateHealthEvent: {fileID: 11400000, guid: 8dcf8d2295952b84989619d18c0b73e4, type: 2}
+  m_gameEvent: {fileID: 11400000, guid: 614bdb5a7e81c6445ab8f6e75564932c, type: 2}
   m_flickerVFX: {fileID: 146549103471864959}
 --- !u!114 &4325414451220775741
 MonoBehaviour:
